@@ -25,6 +25,7 @@ namespace Samila1.Controllers
 
         public IActionResult Privacy()
         {
+
             return View();
         }
 
