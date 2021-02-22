@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Samila1.Data;
 using Samila1.Models;
 using System;
 using System.Collections.Generic;
@@ -12,15 +14,18 @@ namespace Samila1.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext db;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
+            db = context;
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public ActionResult Index()
         {
-            return View();
+            var result = db.News.Include(x => x.Author).ToList();
+            return View(result);
         }
 
         public IActionResult Privacy()

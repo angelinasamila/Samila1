@@ -14,5 +14,10 @@ namespace Samila1.Models
         public string ImageName { get; set; }
         public DateTime CreatedDate { get; set; }
         public IdentityUser Author { get; set; }
+        public ICollection<Post> Posts { get; set; }
+            
+            
+    
     }
+   
 }

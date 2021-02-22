@@ -1,62 +1,124 @@
 ﻿
-    <table width="805" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ffff00">
+@model IEnumerable<Samila1.Models.News>
 
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
         <tr>
-
-            <td height="190" colspan="3" align="center">
-                <img src="~/img/1.jpg" width="817" height="550">
-                <h2>Верхня частина-Header</h2>
-
-            </td>
-
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th></th>
         </tr>
-        <tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
-            <td height="40" align="center">
-                <h2>Горизонтальний блок навігації</h2>
 
-            </td>
+<table width="805" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ffff00">
 
-        </tr>
+    <tr>
 
-        <tr>
+        <td height="190" colspan="3" align="center">
+            <img src="~/img/1.jpg" width="817" height="550">
+            <h2>Верхня частина-Header</h2>
 
-            <td width="230" valign="top" bgcolor="#d8cba8">
+        </td>
 
-                <div id="col_left" align="center">
-                    <h2>Ліва колонка</h2>
+    </tr>
+    <tr>
 
-                </div>
+        <td height="40" align="center">
+            <h2>Горизонтальний блок навігації</h2>
 
-            </td>
+        </td>
 
-            <td width="345" valign="top" bgcolor="#d8cba8">
+    </tr>
 
-                <div id="content" align="center">
-                    <h2>Центральна частина</h2>
+    <tr>
 
-                </div>
+        <td width="230" valign="top" bgcolor="#d8cba8">
 
-            </td>
+            <div id="col_left" align="center">
+                <h2>Ліва колонка</h2>
 
-            <td width="230" valign="top" bgcolor="#d8cba8">
+            </div>
 
-                <div id="col_right" align="center">
-                    <h2>Права колонка</h2>
+        </td>
 
-                </div>
+        <td width="345" valign="top" bgcolor="#d8cba8">
 
-            </td>
+            <div id="content" align="center">
+                <h2>Центральна частина</h2>
 
-        </tr>
+            </div>
 
-        <tr>
+        </td>
 
-            <td colspan="3" align="center" bgcolor="#00ff00">
-                <h2>Нижня частина-Footer</h2>
+        <td width="230" valign="top" bgcolor="#d8cba8">
 
-            </td>
+            <div id="col_right" align="center">
+                <h2>Права колонка</h2>
 
-        </tr>
+            </div>
 
-    </table>
+        </td>
+
+    </tr>
+
+    <tr>
+
+        <td colspan="3" align="center" bgcolor="#00ff00">
+            <h2>Нижня частина-Footer</h2>
+
+        </td>
+
+    </tr>
+
+</table>
